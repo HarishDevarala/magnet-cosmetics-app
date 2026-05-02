@@ -40,6 +40,9 @@ body {
   background-color: var(--soft-pink);
   color: var(--text-dark);
   line-height: 1.6;
+}
+
+#root {
   overflow-x: hidden;
 }
 
@@ -243,19 +246,7 @@ button {
   .grid-3, .grid-4 { grid-template-columns: 1fr; }
 }
 
-/* Mobile Nav Bottom */
-.mobile-bottom-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: white;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-  z-index: 100;
-  padding: 12px 24px;
-  justify-content: space-between;
-}
-
+/* Mobile Nav Bottom container spacing */
 @media (max-width: 768px) {
-  .mobile-bottom-nav { display: flex; }
   body { padding-bottom: 70px; }
 }
