@@ -1,0 +1,135 @@
+.listing-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.filters-sidebar {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 100px;
+}
+
+.filter-group {
+  margin-bottom: 30px;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group h4 {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.filter-group ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-group ul li {
+  margin-bottom: 12px;
+}
+
+.filter-group ul li label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.filter-group ul li label:hover {
+  color: var(--rose-gold);
+}
+
+.filter-group ul li input[type="checkbox"] {
+  accent-color: var(--rose-gold);
+  width: 16px;
+  height: 16px;
+}
+
+.price-slider-container {
+  padding: 10px 0;
+}
+
+.price-slider-container input[type="range"] {
+  width: 100%;
+  accent-color: var(--rose-gold);
+  cursor: pointer;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.mobile-filter-toggle {
+  display: none;
+  width: 100%;
+  padding: 15px;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .listing-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .filters-sidebar {
+    position: static;
+    display: none; /* Hidden by default on mobile */
+  }
+
+  .filters-sidebar.open {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .mobile-filter-toggle {
+    display: flex;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .section-padding {
+    padding: 40px 0;
+  }
+}

@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import MobileNav from './components/MobileNav';
+import SplashScreen from './components/SplashScreen';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -16,8 +17,11 @@ import ContactPage from './pages/ContactPage';
 import { CartProvider } from './context/CartContext';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <CartProvider>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <Router>
         <Navbar />
         <main>
@@ -33,10 +37,10 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <MobileNav />
       </Router>
     </CartProvider>
   );
 }
 
 export default App;
+

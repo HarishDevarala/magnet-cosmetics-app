@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Search, Heart, User, Menu } from 'lucide-react';
+import { useState } from 'react';
+import { ShoppingBag, Search, Heart, User, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const { totalItems } = useCart();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="announcement-bar">
@@ -12,7 +19,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-container container">
         <div className="nav-left">
-          <Menu className="mobile-menu-icon" />
+          <button className="mobile-menu-icon" onClick={toggleMobileMenu}>
+            <Menu size={24} />
+          </button>
           <Link to="/" className="brand-logo">
             <span className="brand-icon">M</span>
             <div className="brand-text">
@@ -39,6 +48,32 @@ const Navbar = () => {
             <ShoppingBag size={20} />
             <span className="cart-count">{totalItems}</span>
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-content">
+          <div className="mobile-menu-header">
+            <Link to="/" className="brand-logo" onClick={toggleMobileMenu}>
+              <span className="brand-icon">M</span>
+              <div className="brand-text">
+                MAGNET
+                <small>COSMETICS</small>
+              </div>
+            </Link>
+            <button className="close-menu-btn" onClick={toggleMobileMenu}>
+              <X size={24} />
+            </button>
+          </div>
+          <ul className="mobile-nav-links">
+            <li><Link to="/" onClick={toggleMobileMenu}>Home</Link></li>
+            <li><Link to="/categories" onClick={toggleMobileMenu}>Categories</Link></li>
+            <li><Link to="/products" onClick={toggleMobileMenu}>Makeup</Link></li>
+            <li><Link to="/offers" onClick={toggleMobileMenu}>Offers <span className="badge">Sale</span></Link></li>
+            <li><Link to="/about" onClick={toggleMobileMenu}>About Us</Link></li>
+            <li><Link to="/contact" onClick={toggleMobileMenu}>Contact</Link></li>
+          </ul>
         </div>
       </div>
     </nav>
